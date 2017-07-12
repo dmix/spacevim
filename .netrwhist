@@ -1,11 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/dmix/tmp/.SpaceVim.d'
-let g:netrw_dirhist_2='/home/dmix/.cache/vimfiles/repos/github.com/haya14busa/incsearch.vim'
-let g:netrw_dirhist_3='/home/dmix/.cache/vimfiles/repos/github.com/haya14busa/incsearch.vim/.git'
-let g:netrw_dirhist_4='/home/dmix/.cache/vimfiles/repos/github.com/haya14busa/incsearch.vim/.git/objects'
-let g:netrw_dirhist_5='/home/dmix/.cache/vimfiles/repos/github.com/haya14busa/incsearch.vim/.git'
-let g:netrw_dirhist_6='/home/dmix/zsh/plugins/zsh-coder-aliases/aliases'
-let g:netrw_dirhist_7='/home/dmix/zsh/plugins/zsh-coder-aliases'
-let g:netrw_dirhist_8='/home/dmix/dev/blog'
-let g:netrw_dirhist_9='/home/dmix/zsh/plugins/zsh-coder-aliases'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/dmix/zsh/plugins/zsh-coder-aliases'
+let g:netrw_dirhist_2='/home/dmix/zsh/plugins'
+let g:netrw_dirhist_3='/home/dmix/zsh/plugins/zsh-coder-aliases'
+let g:netrw_dirhist_4='/home/dmix/zsh/plugins/zsh-coder-aliases/aliases'
+let g:netrw_dirhist_5='/home/dmix/zsh/plugins'
