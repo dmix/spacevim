@@ -51,7 +51,7 @@ if ((MACOS)); then
 
     if ! installed "yarn"; then
         echo '> Installing Yarn'
-	brew install yarn
+	    brew install yarn
     fi
 fi
 
@@ -68,7 +68,6 @@ if ((MACOS)); then
     echo '> Updating homebrew'
     brew update
     brew upgrade
-    brew install wget git curl
     if ! installed "nvim"; then
         echo '> Installing NeoVim'
         brew install --HEAD neovim

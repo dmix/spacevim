@@ -1,6 +1,6 @@
-" -----------------------------------------------------------------------------
+" ==============================================================================
 " SpaceVim Keybindings
-" -----------------------------------------------------------------------------
+" ==============================================================================
 
 " Denite config
 " -----------------------------------------------------------------------------
@@ -32,30 +32,15 @@ command! WQ wq!
 command! Wq wq!
 
 " Stupid help menu
-map <F1> <Esc>
+map  <F1> <Esc>
 imap <F1> <Esc>
 
 " Writing/exiting shortcuts
-inoremap qq <Esc>
+inoremap qq  <Esc>
 nnoremap qqq <Esc> :quit!  <CR>
-nnoremap QQ <Esc> :quit!   <CR>
-nnoremap WW <Esc> :write!  <CR>
-nnoremap WQ <Esc> :wq!     <CR>
-
-" Autocmds
-" -----------------------------------------------------------------------------
-
-:augroup fixcmds
-    " Custom formatting
-    autocmd FileType make,erlang setlocal noexpandtab
-    autocmd FileType go setlocal tabstop=4 shiftwidth=4 noexpandtab
-    autocmd FileType go autocmd BufWritePre <buffer> GoFmt
-
-    " Aliasing file types
-    autocmd BufNewFile,BufRead *.todo set syntax=markdown
-    autocmd BufNewFile,BufRead *.alias set syntax=zsh
-    autocmd BufNewFile,BufRead *.html.eex set syntax=eelixir
-:augroup END
+nnoremap QQ  <Esc> :quit!  <CR>
+nnoremap WW  <Esc> :write! <CR>
+nnoremap WQ  <Esc> :wq!    <CR>
 
 " Copy/paste
 " -----------------------------------------------------------------------------

@@ -7,6 +7,7 @@
 
 let g:spacevim_disabled_plugins=[
     \ ['es.next.syntax.vim'],
+    \ ['mhinz/vim-startify']
     \ ]
 
 let g:spacevim_custom_plugins = [
