@@ -1,1 +1,26 @@
+# -- Common filetypes --
+*.swp
+*.diff
+*.err
+*.orig
+*.rej
+*.swo
+*.swp
+*.vi
+*.tmp
+*~
+*.sass-cache
+*.zwc
+*.old*
+*.bak
+*.beam
+
+# -- Vendor files --
+*vim/bundle*
+*plugged*
+**/node_modules/
+*/**/.gitignore
+*/**/.git
+
+# -- Custom --
 .netrwhist
