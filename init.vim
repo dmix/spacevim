@@ -5,7 +5,7 @@
 " Core options
 " -----------------------------------------------------------------------------
 
-let g:spacevim_enable_vimfiler_welcome = 0
+let g:spacevim_enable_vimfiler_welcome = 1
 let g:spacevim_enable_debug = 1
 let g:spacevim_enable_tabline_filetype_icon = 1
 let g:spacevim_enable_os_fileformat_icon = 1
@@ -14,6 +14,7 @@ let g:spacevim_enable_debug = 1
 let g:spacevim_realtime_leader_guide = 1
 let g:spacevim_colorscheme = 'hybrid_reverse'
 let g:spacevim_filemanager = 'nerdtree'
+
 
 " Layers
 " -----------------------------------------------------------------------------

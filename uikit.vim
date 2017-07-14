@@ -98,5 +98,10 @@ iabbrev uix5            <c-r>=UIKit.x5<cr>
 " ZSH Env
 iabbrev zenv #!/usr/bin/env zsh
 
+" ZSH filetype
+iabbrev zft vi:syntax=zsh
+
 " Log
 iabbrev llg echo "> "<esc>hi
+
+" vi:syntax=vim

@@ -15,7 +15,7 @@ endif
 
 nnoremap vrc <Esc> :e ~/.SpaceVim.d/init.vim <CR>
 nnoremap zrc <Esc> :e ~/zsh/src/init.zsh <CR>
-nnoremap arc <Esc> :e ~/zsh/plugins/zsh-coder-aliases <CR>
+nnoremap arc <Esc> :e ~/zsh/plugins/zsh-aliases <CR>
 
 " Keybindings
 " -----------------------------------------------------------------------------

@@ -1,7 +1,8 @@
-" -----------------------------------------------------------------------------
+" ==============================================================================
 " SpaceVim Plugins
-" -----------------------------------------------------------------------------
+" ==============================================================================
 
+" -----------------------------------------------------------------------------
 " Custom Plugins
 " -----------------------------------------------------------------------------
 
@@ -12,20 +13,75 @@ let g:spacevim_disabled_plugins=[
 
 let g:spacevim_custom_plugins = [
     \ ['tomtom/tcomment_vim'],
-    \ ['irrationalistic/vim-tasks', { 'on_ft' : ['tasks']}],
-    \ ['elixir-lang/vim-elixir',    { 'on_ft' : ['elixir', 'eelixir']}],
-    \ ['slashmili/alchemist.vim',   { 'on_ft' : ['elixir', 'eelixir']}],
-    \ ['isRuslan/vim-es6',          { 'on_ft' : ['javascript']}],
+    \ ['irrationalistic/vim-tasks',     { 'on_ft' : ['tasks']}],
+    \ ['elixir-lang/vim-elixir',        { 'on_ft' : ['elixir', 'eelixir']}],
+    \ ['slashmili/alchemist.vim',       { 'on_ft' : ['elixir', 'eelixir']}],
+    \ ['isRuslan/vim-es6',              { 'on_ft' : ['javascript']}],
+    \ ['sebastianmarkow/deoplete-rust', { 'on_ft' : ['rust']}],
+    \ ['zchee/deoplete-zsh', { 'on_ft' : ['zsh']}],
     \ ]
 
+    "\ ['', { 'on_ft' : ['']}],
+"
+" -----------------------------------------------------------------------------
 " Plugin options
 " -----------------------------------------------------------------------------
 
+" NERDTree
+" ------------------------------------------------------------------------------
+
+let NERDTreeShowHidden = 1
+let NERDTreeWinPos = "left"
+let NERDTreeIgnore = ['\.vim$', '\~$', '\.js$', '\.css$', '\.map', '.git$', 'node_modules$', '_build$']
+
+" Unite
+" ------------------------------------------------------------------------------
+let g:unite_source_grep_command = 'pt'
+
+let g:unite_source_grep_default_opts = '--nogroup ---smart-case --nocolor -column --hidden '.
+   \ '--ignore ".git" ' .
+   \ '--ignore "node_modules" ' .
+   \ '--ignore "_build" ' .
+   \ '--ignore "deps" -g ""'
+
+let g:unite_source_rec_async_command = 'pt --nocolor --nogroup --smart-case --column --hidden ' .
+   \ '--ignore ".git" ' .
+   \ '--ignore "node_modules" ' .
+   \ '--ignore "_build" ' .
+   \ '--ignore "deps" -g ""'
+
+" Denite
+" ------------------------------------------------------------------------------
+function! s:deniteSettings() 
+    call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+    call denite#custom#var('file_rec/git', 'command',
+		\ ['git', 'ls-files', '-co', '--exclude-standard'])
+
+    call denite#custom#var('file_rec', 'command',
+        \ ['pt', '--follow', '--nocolor', '--nogroup', '-g', ''])
+
+    call denite#custom#var('grep', 'command', ['pt'])
+    call denite#custom#var('grep', 'default_opts',
+        \ ['--nogroup', '--smart-case', '--nocolor'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', [])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+endfunction
+
+" Delayed call due to race condition
+let timer = timer_start(500,
+            \ {-> execute("call s:deniteSettings()", "")},
+            \ {'repeat': 0})
+
 " Strip Whitespace
+" ------------------------------------------------------------------------------
+
 let g:strip_whitespace_on_save = 1
 let g:better_whitespace_enabled = 0
 
 " NeoMake x Linters
+" ------------------------------------------------------------------------------
 let g:neomake_vim_enabled_makers = ['vint']
 let g:neomake_erlang_enabled_makers = ['flycheck']
 let g:neomake_elixir_enabled_makers = ['dogma']
