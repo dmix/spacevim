@@ -2,26 +2,35 @@
 " SpaceVim Plugins
 " ==============================================================================
 
+" Note: check here for new plugins 
+" https://github.com/search?o=desc&q=language%3A%22Vim+script%22+stars%3A%3E25+pushed%3A%3E2017-01-01&s=stars&type=Repositories&utf8=%E2%9C%93
 " -----------------------------------------------------------------------------
+"
 " Custom Plugins
 " -----------------------------------------------------------------------------
 
+" If there is a particular plugin you don't like, you can define this
+" variable to disable them entirely:
 let g:spacevim_disabled_plugins=[
-    \ ['es.next.syntax.vim'],
-    \ ['mhinz/vim-startify']
-    \ ]
+\ ['es.next.syntax.vim'],
+\ ]
 
 let g:spacevim_custom_plugins = [
-    \ ['tomtom/tcomment_vim'],
-    \ ['irrationalistic/vim-tasks',     { 'on_ft' : ['tasks']}],
-    \ ['elixir-lang/vim-elixir',        { 'on_ft' : ['elixir', 'eelixir']}],
-    \ ['slashmili/alchemist.vim',       { 'on_ft' : ['elixir', 'eelixir']}],
-    \ ['isRuslan/vim-es6',              { 'on_ft' : ['javascript']}],
-    \ ['sebastianmarkow/deoplete-rust', { 'on_ft' : ['rust']}],
-    \ ['zchee/deoplete-zsh', { 'on_ft' : ['zsh']}],
-    \ ]
+\ ['tomtom/tcomment_vim'],
+\ ['irrationalistic/vim-tasks',       { 'on_ft' : ['tasks']}],
+\ ['elixir-lang/vim-elixir',          { 'on_ft' : ['elixir', 'eelixir']}],
+\ ['slashmili/alchemist.vim',         { 'on_ft' : ['elixir', 'eelixir']}],
+\ ['isRuslan/vim-es6',                { 'on_ft' : ['javascript']}],
+\ ['sebastianmarkow/deoplete-rust',   { 'on_ft' : ['rust']}],
+\ ['zchee/deoplete-zsh',              { 'on_ft' : ['zsh']}],
+\ ['SevereOverfl0w/deoplete-github',  { }],
+\ ['fishbullet/deoplete-ruby',  { }],
+\ ['Shougo/deoplete-rct',  { }],
+\ ['pbogut/deoplete-elm',  { }],
+\ ['fszymanski/deoplete-emoji',  { }],
+\ ['ryanoasis/vim-devicons',  { }],
+\ ]
 
-    "\ ['', { 'on_ft' : ['']}],
 "
 " -----------------------------------------------------------------------------
 " Plugin options
@@ -32,7 +41,7 @@ let g:spacevim_custom_plugins = [
 
 let NERDTreeShowHidden = 1
 let NERDTreeWinPos = "left"
-let NERDTreeIgnore = ['\.vim$', '\~$', '\.js$', '\.css$', '\.map', '.git$', 'node_modules$', '_build$']
+let NERDTreeIgnore = ['\~$', '\.js$', '\.css$', '\.map', '.git$', 'node_modules$', '_build$']
 
 " Unite
 " ------------------------------------------------------------------------------
@@ -52,7 +61,7 @@ let g:unite_source_rec_async_command = 'pt --nocolor --nogroup --smart-case --co
 
 " Denite
 " ------------------------------------------------------------------------------
-function! s:deniteSettings() 
+function! g:DeniteSettings() 
     call denite#custom#alias('source', 'file_rec/git', 'file_rec')
     call denite#custom#var('file_rec/git', 'command',
 		\ ['git', 'ls-files', '-co', '--exclude-standard'])
@@ -67,12 +76,25 @@ function! s:deniteSettings()
     call denite#custom#var('grep', 'pattern_opt', [])
     call denite#custom#var('grep', 'separator', ['--'])
     call denite#custom#var('grep', 'final_opts', [])
+
+    " Deoplete 
+    " call deoplete#util#set_pattern(
+    "   \ g:deoplete#omni#input_patterns,
+    "   \ 'gitcommit', [g:deoplete#keyword_patterns.gitcommit])
 endfunction
 
 " Delayed call due to race condition
-let timer = timer_start(500,
-            \ {-> execute("call s:deniteSettings()", "")},
-            \ {'repeat': 0})
+call Delayed("call DeniteSettings()")
+
+
+" Deoplete
+" -----------------------------------------------------------------------------
+
+" deoplete-github
+" let g:deoplete#sources = {}
+" let g:deoplete#sources.gitcommit=['github']
+" let g:deoplete#keyword_patterns = {}
+" let g:deoplete#keyword_patterns.gitcommit = '.+'
 
 " Strip Whitespace
 " ------------------------------------------------------------------------------
@@ -101,3 +123,21 @@ let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_markdown_enabled_makers = ['proselint']
 let g:neomake_text_enabled_makers = ['proselint']
+
+" Bookmarks
+" -----------------------------------------------------------------------------
+
+let g:bookmark_save_per_working_dir = 0
+let g:bookmark_auto_save = 1
+let g:bookmark_auto_save_file = $HOME .'/.SpaceVim.d/.vim-bookmarks'
+
+function! g:AutoloadBookmarks() 
+    " Hack to autoload lazy vim-bookmarks plugin
+    silent normal mn
+    " Fix SpaceVims broken auto-loading/saving bookmarks
+    call BookmarkLoad(g:bookmark_auto_save_file, 0, 1)
+    autocmd BufLeave,VimLeave * call BookmarkSave(g:bookmark_auto_save_file, 1)
+endfunction
+
+call Delayed("call AutoloadBookmarks()")
+

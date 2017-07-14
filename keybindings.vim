@@ -14,8 +14,12 @@ endif
 " -----------------------------------------------------------------------------
 
 nnoremap vrc <Esc> :e ~/.SpaceVim.d/init.vim <CR>
+nnoremap vrp <Esc> :e ~/.SpaceVim.d/plugins.vim <CR>
+nnoremap vrk <Esc> :e ~/.SpaceVim.d/keybindings.vim <CR>
+nnoremap vru <Esc> :e ~/.SpaceVim.d/uikit.vim <CR>
 nnoremap zrc <Esc> :e ~/zsh/src/init.zsh <CR>
 nnoremap arc <Esc> :e ~/zsh/plugins/zsh-aliases <CR>
+nnoremap zconf <Esc> :e ~/zsh/src/config.zsh <CR>
 
 " Keybindings
 " -----------------------------------------------------------------------------

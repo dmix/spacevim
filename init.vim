@@ -5,16 +5,18 @@
 " Core options
 " -----------------------------------------------------------------------------
 
-let g:spacevim_enable_vimfiler_welcome = 1
+let g:spacevim_enable_googlesuggest = 1
+let g:spacevim_enable_vimfiler_welcome = 0
 let g:spacevim_enable_debug = 1
 let g:spacevim_enable_tabline_filetype_icon = 1
 let g:spacevim_enable_os_fileformat_icon = 1
 let g:spacevim_buffer_index_type = 1
-let g:spacevim_enable_debug = 1
 let g:spacevim_realtime_leader_guide = 1
 let g:spacevim_colorscheme = 'hybrid_reverse'
 let g:spacevim_filemanager = 'nerdtree'
 
+" Disable swap warning
+set shortmess+=A
 
 " Layers
 " -----------------------------------------------------------------------------
@@ -40,6 +42,30 @@ call SpaceVim#layers#load('shell')
 
 " Autocmds
 " -----------------------------------------------------------------------------
+function! g:Delayed(cmd)
+    let timer = timer_start(500, {-> execute(a:cmd, "")})
+endfunction
+
+" Auto-start dir browseer
+augroup startup
+    let dirHome = '/\(Users\|home\)/\w*\%$'
+    let dirCode = '/\(Users\|home\)/\w*/\(dev\|code\)/\w*' 
+    if match(getcwd(), dirHome) == 0
+        " Open bookmarks menu when in home dir
+        if match(getcwd(), dirCode) == 0
+            call Delayed("call BookmarkShowAll()")
+        endif
+    else
+        " Otherwise open NERDTree
+        autocmd VimEnter * NERDTree
+        autocmd VimEnter * wincmd p
+
+        " Code dir = open Denite file_rec/git
+        if match(getcwd(), dirCode) == 0
+            call Delayed("Unite file_rec/git")
+        endif
+    endif
+augroup END
 
 augroup reloadVimrc
     " Automatically reload vimrc when changes are made
