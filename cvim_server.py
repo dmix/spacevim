@@ -1,0 +1,99 @@
+Jul 04, 2017	IDP PURCHASE - 0494 
+                -DOLLARAMA # 666	-$16.58		
+Jul 04, 2017	IDP PURCHASE - 4457 
+                -COLD TURKEY JUI	-$36.09		
+Jul 04, 2017	CASH WITHDRAWAL 
+                -BR TO BR - 1728	-$1,500.00		
+Jul 04, 2017	C-IDP PURCHASE-3930 
+                -THE ROASTERY CO	-$2.10		
+Jul 04, 2017	C-IDP PURCHASE-7013 
+                -STARBUCKS #2207	-$2.36		
+Jul 04, 2017	C-IDP PURCHASE-2417 
+                -THE ROASTERY CO	-$2.99		
+Jul 04, 2017	C-IDP PURCHASE-4767 
+                -STARBUCKS #2207	-$6.44		
+Jul 04, 2017	C-IDP PURCHASE-6319 
+                -SOBEYS #867	-$10.45		
+Jul 04, 2017	C-IDP PURCHASE-6122 
+                -THE WINE SHOP #	-$16.00		
+Jul 04, 2017	C-IDP PURCHASE-7839 
+                -THE WINE SHOP #	-$16.00		
+Jul 04, 2017	C-IDP PURCHASE-5385 
+                -LCBO/RAO #0511	-$28.20		
+Jul 04, 2017	DEPOSIT INTEREST		$0.07	$7,199.32
+Jul 05, 2017	PTB WD --- T3706439	-$100.00		
+Jul 05, 2017	C-IDP PURCHASE-9521 
+                -BRIOCHE DOREE #	-$6.73		
+Jul 05, 2017	C-IDP PURCHASE-2884 
+                -MCDONALD'S #290	-$9.13		
+Jul 05, 2017	C-IDP PURCHASE-4771 
+                -WINE RACK 106	-$12.25		$7,071.21
+Jul 06, 2017	IDP PURCHASE - 4052 
+                -COLD TURKEY JUI	-$18.07		
+Jul 06, 2017	PTB WD --- TX603103	-$100.00		
+Jul 06, 2017	C-IDP PURCHASE-4814 
+                -SECOND CUP #938	-$8.53		
+Jul 06, 2017	C-IDP PURCHASE-1300 
+				-LCBO/RAO #0511	-$27.50		
+Jul 06, 2017	C-IDP PURCHASE-6340 
+                -SHOPPERS DRUG M	-$44.05		$6,873.06
+Jul 07, 2017	PTB WD --- T3706684	-$100.00		
+Jul 07, 2017	C-IDP PURCHASE-1595 
+                -WINE RACK 106	-$16.95		$6,756.11
+Jul 10, 2017	IDP PURCHASE - 3089 
+                -VAPE 29 - QUEEN	-$20.35		
+Jul 10, 2017	PTB WD --- 00023404	-$103.00		
+Jul 10, 2017	INTERAC-SC-3404	-$1.50		
+Jul 10, 2017	C-IDP PURCHASE-5583 
+                -LOBLAW QUEEN &	-$5.35		
+Jul 10, 2017	C-IDP PURCHASE-6393 
+                -BRIOCHE DOREE #	-$6.22		
+Jul 10, 2017	C-IDP PURCHASE-7086 
+                -THE WINE SHOP #	-$15.95		
+Jul 10, 2017	C-IDP PURCHASE-7640 
+                -SHOPPERS DRUG M	-$32.04		
+Jul 10, 2017	C-IDP PURCHASE-2336 
+                -SHOPPERS DRUG M	-$45.20		
+Jul 10, 2017	C-IDP PURCHASE-0852 
+                -SOBEYS #934	-$56.72		$6,469.78
+Jul 11, 2017	IDP PURCHASE - 7952 
+                -CROWN TAXI			-$21.00						
+Jul 11, 2017	PTB WD --- T3695702			-$100.00						
+Jul 11, 2017	INTERAC E-TRF- 6048			-$300.00						
+Jul 11, 2017	C-IDP PURCHASE-2150 
+                -LCBO/RAO #0012			-$26.55						
+Jul 11, 2017	INT E-TRF FEE			-$1.00						$6,021.23
+Jul 12, 2017	PTB WD --- T3707384			-$100.00						
+Jul 12, 2017	CASH WITHDRAWAL 
+                -BR TO BR - 2157			-$2,000.00						$3,921.23
+Jul 13, 2017	IDP PURCHASE - 8174 
+                -VAPE 29 - QUEEN			-$32.76						$3,888.47
+Jul 14, 2017	PTB WD --- TX223904			-$80.00						
+Jul 14, 2017	C-IDP PURCHASE-0488 
+                -LCBO/RAO #0568			-$26.55						
+Jul 14, 2017	C-IDP PURCHASE-9113 
+                -JRSV			-$39.55						$3,742.37
+Jul 17, 2017	C-IDP PURCHASE-7463 
+                -SHOPPERS DRUG M			-$15.83						
+Jul 17, 2017	SERVICE FEE 
+                - 1BRWD/TF/CHQ@$2.00			-$2.00						
+Jul 17, 2017	SERVICE FEE 
+                - 43EPMT/WD/TFR@$2.00			-$86.00						$3,638.54
+Jul 18, 2017	IDP PURCHASE - 2662 
+                -WINE RACK 106			-$11.00						
+Jul 18, 2017	PTB WD --- TW871356			-$80.00						
+Jul 18, 2017	C-IDP PURCHASE-6792 
+                -THE WINE SHOP #			-$16.00						
+Jul 18, 2017	C-IDP PURCHASE-0383 
+                -SOBEYS #934			-$19.75						
+Jul 18, 2017	OD INTEREST			-$0.34						$3,511.45
+Jul 19, 2017	PTB WD --- 00022965			-$103.00						
+Jul 19, 2017	INTERAC-SC-2965			-$1.50						
+Jul 19, 2017	C-IDP PURCHASE-2134 
+                -LCBO/RAO #0568			-$27.20						$3,379.75
+Jul 20, 2017	PTB WD --- 00023079			-$103.00						
+Jul 20, 2017	INTERAC-SC-3079			-$1.50						
+Jul 20, 2017	C-IDP PURCHASE-6419 
+                -MCDONALD'S #290			-$9.37						$3,265.88
+Jul 21, 2017	IDP PURCHASE			-$6.72						
+Jul 21, 2017	PTB WITHDRAWAL			-$100.00						$3,159.16

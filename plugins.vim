@@ -16,32 +16,82 @@ let g:spacevim_disabled_plugins=[
 \ ]
 
 let g:spacevim_custom_plugins = [
+\ ['cocopon/iceberg.vim'],
 \ ['tomtom/tcomment_vim'],
 \ ['irrationalistic/vim-tasks',       { 'on_ft' : ['tasks']}],
-\ ['elixir-lang/vim-elixir',          { 'on_ft' : ['elixir', 'eelixir']}],
-\ ['slashmili/alchemist.vim',         { 'on_ft' : ['elixir', 'eelixir']}],
 \ ['isRuslan/vim-es6',                { 'on_ft' : ['javascript']}],
 \ ['sebastianmarkow/deoplete-rust',   { 'on_ft' : ['rust']}],
 \ ['zchee/deoplete-zsh',              { 'on_ft' : ['zsh']}],
 \ ['SevereOverfl0w/deoplete-github',  { }],
-\ ['fishbullet/deoplete-ruby',  { }],
-\ ['Shougo/deoplete-rct',  { }],
-\ ['pbogut/deoplete-elm',  { }],
-\ ['fszymanski/deoplete-emoji',  { }],
-\ ['ryanoasis/vim-devicons',  { }],
-\ ]
+\ ['fishbullet/deoplete-ruby',        { }],
+\ ['Shougo/deoplete-rct',             { }],
+\ ['pbogut/deoplete-elm',             { }],
+\ ['fszymanski/deoplete-emoji',       { }],
+\ ['sjl/vitality.vim',                { }],
+\ ['christoomey/vim-tmux-navigator',  { }],
+\ ['benmills/vimux',                  { }],
+\ ['baabelfish/nvim-nim',             { 'on_ft':  ['nim']}],
+\ ['ehamberg/vim-cute-python',        { 'on_ft' : ['python']}],
+\ ['ehamberg/vim-cute-erlang',        { 'on_ft' : ['erlang']}],
+\ ['enomsg/vim-haskellConcealPlus',   { 'on_ft' : ['haskell']}],
+\ ['MnO2/vim-ocaml-conceal',          { 'on_ft' : ['ocaml']}],
+\ ["d-gold/vim-cute-ruby",            { 'on_ft' : ['ruby']}],
+\ ['elixir-lang/vim-elixir',          { 'on_ft' : ['elixir', 'eelixir']}],
+\ ['thinca/vim-ref',                  { 'on_ft' : ['elixir', 'eelixir']}],
+\ ['kbrw/elixir.nvim',                { 'on_ft' : ['elixir', 'eelixir'],
+                                      \ 'do': 'yes \| ./install.sh' }],
+\ ['mattn/webapi-vim',                { 'on_ft' : ['elixir', 'eelixir']}],
+\ ['lucidstack/hex.vim',              { 'on_ft' : ['elixir', 'eelixir']}],
+\ ['dmix/phoenix.vim',                { 'on_ft' : ['elixir', 'eelixir']}],
+\ ['sbdchd/neoformat',                { 'on_ft' : ['elixir', 'eelixir']}],
+\ ['huiyiqun/elvish.vim',             { 'on_ft' : ['elvish', 'eelixir']}],
+\ ['slim-template/vim-slim',          { 'on_ft' : ['elixir', 'html', 'slim', 'eelixir']}],
+\]
 
 "
 " -----------------------------------------------------------------------------
 " Plugin options
 " -----------------------------------------------------------------------------
 
+" Vim Tmux Navigator
+" -----------------------------------------------------------------------------
+
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+
+
+" Vimux
+" -----------------------------------------------------------------------------
+
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR> 
+
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+
+function! VimuxSlime()
+	call VimuxOpenRunner()
+	call VimuxSendText(@v)
+	call VimuxSendKeys("Enter")
+	echom "Vimux GO"
+endfunction
+
+" If text is selected, save it in the v buffer and send that buffer it to tmux
+vnoremap <Leader>vv "vy :call VimuxSlime()<CR>
+
+" Select current paragraph and send it to tmux
+" noremap <Leader>vs vip<Leader>vs<CR>
+nnoremap <Leader>vv v$"vy :call VimuxSlime()<CR>
+
 " NERDTree
 " ------------------------------------------------------------------------------
 
 let NERDTreeShowHidden = 1
 let NERDTreeWinPos = "left"
-let NERDTreeIgnore = ['\~$', '\.js$', '\.css$', '\.map', '.git$', 'node_modules$', '_build$']
+let NERDTreeIgnore = ['\~$', '\.map', '.git$', 'node_modules$', '_build$']
 
 " Unite
 " ------------------------------------------------------------------------------
@@ -58,6 +108,41 @@ let g:unite_source_rec_async_command = 'pt --nocolor --nogroup --smart-case --co
    \ '--ignore "node_modules" ' .
    \ '--ignore "_build" ' .
    \ '--ignore "deps" -g ""'
+
+" Startify
+" 
+" -----------------------------------------------------------------------------
+
+function! g:StartifyOptions() 
+    let g:startify_enable_special         = 0
+    let g:startify_files_number           = 8
+    let g:startify_relative_path          = 1
+    let g:startify_change_to_dir          = 1
+    let g:startify_update_oldfiles        = 1
+    let g:startify_session_autoload       = 1
+    let g:startify_session_persistence    = 1
+
+    let g:startify_skiplist = [
+            \ 'COMMIT_EDITMSG',
+            \ 'bundle/.*/doc',
+            \ '/data/repo/neovim/runtime/doc',
+            \ '/Users/mhi/local/vim/share/vim/vim74/doc',
+            \ ]
+
+    let g:startify_bookmarks = [
+            \ { 'c': '~/.vim/vimrc' },
+            \ '~/golfing',
+            \ ]
+
+    let g:startify_custom_header =
+            \ startify#fortune#cowsay('═','║','╔','╗','╝','╚')
+
+    let g:startify_custom_footer =
+           \ ['', "   Vim is charityware. Please read ':help uganda'.", '']
+endfunction
+
+call Delayed("call StartifyOptions()")
+
 
 " Denite
 " ------------------------------------------------------------------------------
@@ -104,9 +189,10 @@ let g:better_whitespace_enabled = 0
 
 " NeoMake x Linters
 " ------------------------------------------------------------------------------
+
 let g:neomake_vim_enabled_makers = ['vint']
 let g:neomake_erlang_enabled_makers = ['flycheck']
-let g:neomake_elixir_enabled_makers = ['dogma']
+let g:neomake_elixir_enabled_makers = ['credo']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_ruby_enabled_makers = ['rubocop']
 let g:neomake_go_enabled_makers = ['gofmt']
@@ -123,6 +209,17 @@ let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_markdown_enabled_makers = ['proselint']
 let g:neomake_text_enabled_makers = ['proselint']
+
+" Neoformat
+" -----------------------------------------------------------------------------
+
+let g:neoformat_elixir_exfmt = {
+  \ 'exe': 'mix',
+  \ 'args': ['exfmt', '--stdin'],
+  \ 'stdin': 1
+  \ }
+
+let g:neoformat_enabled_elixir = ['exfmt']
 
 " Bookmarks
 " -----------------------------------------------------------------------------
@@ -141,3 +238,8 @@ endfunction
 
 call Delayed("call AutoloadBookmarks()")
 
+
+" Slim 
+" -----------------------------------------------------------------------------
+
+autocmd BufNewFile,BufRead *.slim setlocal filetype=slim

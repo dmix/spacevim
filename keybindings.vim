@@ -10,8 +10,9 @@ if has('python3')
     nnoremap <silent> <C-p> :Denite file_rec/git<CR>
 endif
 
+
 " Config shortcut
-" -----------------------------------------------------------------------------
+" p----------------------------------------------------------------------------
 
 nnoremap vrc <Esc> :e ~/.SpaceVim.d/init.vim <CR>
 nnoremap vrp <Esc> :e ~/.SpaceVim.d/plugins.vim <CR>
@@ -59,3 +60,16 @@ set pastetoggle=<F6>
 map <F6> :set invpaste<CR>:set paste?<CR>
 nnoremap Y y$
 vmap Y "+y
+imap <c-v> <esc>"+pa
+
+" TODO: Rename/Refactor
+" -----------------------------------------------------------------------------
+" - Find and replace:
+"   - Categories -> Comments
+"   - categories -> comments
+"   - Category -> Comment
+"   - category -> comment
+"
+" - Interface:
+"    call g:RenameModel("Comments", "Comment", "comments", "comment", "Categories", "Category", "categories", "category")
+
