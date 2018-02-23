@@ -18,7 +18,7 @@ let g:spacevim_disabled_plugins=[
 let g:spacevim_custom_plugins = [
 \ ['cocopon/iceberg.vim'],
 \ ['tomtom/tcomment_vim'],
-\ ['irrationalistic/vim-tasks',       { 'on_ft' : ['tasks']}],
+\ ['dmix/vim-tasks',                  { 'on_ft' : ['tasks']}],
 \ ['isRuslan/vim-es6',                { 'on_ft' : ['javascript']}],
 \ ['sebastianmarkow/deoplete-rust',   { 'on_ft' : ['rust']}],
 \ ['zchee/deoplete-zsh',              { 'on_ft' : ['zsh']}],
@@ -92,6 +92,16 @@ nnoremap <Leader>vv v$"vy :call VimuxSlime()<CR>
 let NERDTreeShowHidden = 1
 let NERDTreeWinPos = "left"
 let NERDTreeIgnore = ['\~$', '\.map', '.git$', 'node_modules$', '_build$']
+
+" Open NERDTree when opening directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+function! g:NERDTreeSettings() 
+  map <C-n> :NERDTreeToggle<CR>
+endfunction
+
+call Delayed("call NERDTreeSettings()")
 
 " Unite
 " ------------------------------------------------------------------------------
