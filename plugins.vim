@@ -12,14 +12,17 @@
 " If there is a particular plugin you don't like, you can define this
 " variable to disable them entirely:
 let g:spacevim_disabled_plugins=[
-\ ['es.next.syntax.vim'],
+  \ ['Raimondi/delimitMate']
 \ ]
+"\ ['es.next.syntax.vim'],
 
+" \ ['elixir-lang/vim-elixir',          { 'on_ft' : ['elixir', 'eelixir']}],
+" \ ['kbrw/elixir.nvim',                { 'on_ft' : ['elixir', 'eelixir'],
+"                                       \ 'do': 'yes \| ./install.sh' }],
 let g:spacevim_custom_plugins = [
 \ ['cocopon/iceberg.vim'],
 \ ['tomtom/tcomment_vim'],
 \ ['dmix/vim-tasks',                  { 'on_ft' : ['tasks']}],
-\ ['isRuslan/vim-es6',                { 'on_ft' : ['javascript']}],
 \ ['sebastianmarkow/deoplete-rust',   { 'on_ft' : ['rust']}],
 \ ['zchee/deoplete-zsh',              { 'on_ft' : ['zsh']}],
 \ ['SevereOverfl0w/deoplete-github',  { }],
@@ -36,22 +39,36 @@ let g:spacevim_custom_plugins = [
 \ ['enomsg/vim-haskellConcealPlus',   { 'on_ft' : ['haskell']}],
 \ ['MnO2/vim-ocaml-conceal',          { 'on_ft' : ['ocaml']}],
 \ ["d-gold/vim-cute-ruby",            { 'on_ft' : ['ruby']}],
-\ ['elixir-lang/vim-elixir',          { 'on_ft' : ['elixir', 'eelixir']}],
 \ ['thinca/vim-ref',                  { 'on_ft' : ['elixir', 'eelixir']}],
-\ ['kbrw/elixir.nvim',                { 'on_ft' : ['elixir', 'eelixir'],
-                                      \ 'do': 'yes \| ./install.sh' }],
 \ ['mattn/webapi-vim',                { 'on_ft' : ['elixir', 'eelixir']}],
 \ ['lucidstack/hex.vim',              { 'on_ft' : ['elixir', 'eelixir']}],
 \ ['dmix/phoenix.vim',                { 'on_ft' : ['elixir', 'eelixir']}],
 \ ['sbdchd/neoformat',                { 'on_ft' : ['elixir', 'eelixir']}],
-\ ['huiyiqun/elvish.vim',             { 'on_ft' : ['elvish', 'eelixir']}],
+\ ['huiyiqun/elvish.vim',             { 'on_ft' : ['elvish']}],
 \ ['slim-template/vim-slim',          { 'on_ft' : ['elixir', 'html', 'slim', 'eelixir']}],
+\ ['Glench/Vim-Jinja2-Syntax',        { 'on_ft' : ['jinja.html']}],
+\ ['posva/vim-vue',                   { 'on_ft' : ['vue']}],
+\ ['digitaltoad/vim-pug',             { 'on_ft' : ['pug', 'jade']}],
+\ ['vimwiki/vimwiki',        { }],
+\ ['tbabej/taskwiki',        { }],
+\ ['powerman/vim-plugin-AnsiEsc',        { }],
+\ ['farseer90718/vim-taskwarrior',        { }],
 \]
+" \ ['jiangmiao/auto-pairs',            {}],
+" \ ['',        { }],
+" \ ['isRuslan/vim-es6',                { 'on_ft' : ['javascript']}],
 
-"
 " -----------------------------------------------------------------------------
 " Plugin options
 " -----------------------------------------------------------------------------
+
+" Task Bindings
+" -----------------------------------------------------------------------------
+
+let g:TasksMarkerBase = '☐'
+let g:TasksMarkerDone = '✔'
+let g:TasksMarkerCancelled = '✘'
+let g:TasksAttributeMarker = '@'
 
 " Vim Tmux Navigator
 " -----------------------------------------------------------------------------
@@ -172,6 +189,7 @@ function! g:DeniteSettings()
     call denite#custom#var('grep', 'separator', ['--'])
     call denite#custom#var('grep', 'final_opts', [])
 
+    "call deoplete#custom#source('alchemist', 'rank', 9999)
     " Deoplete 
     " call deoplete#util#set_pattern(
     "   \ g:deoplete#omni#input_patterns,
@@ -199,7 +217,6 @@ let g:better_whitespace_enabled = 0
 
 " NeoMake x Linters
 " ------------------------------------------------------------------------------
-
 let g:neomake_vim_enabled_makers = ['vint']
 let g:neomake_erlang_enabled_makers = ['flycheck']
 let g:neomake_elixir_enabled_makers = ['credo']
@@ -219,6 +236,11 @@ let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_css_enabled_makers = ['stylelint']
 let g:neomake_markdown_enabled_makers = ['proselint']
 let g:neomake_text_enabled_makers = ['proselint']
+let g:neomake_vue_enabled_makers = ['eslint']
+
+autocmd FileType vue autocmd BufWritePre <buffer> Neomake
+" let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_javascript_eslint_exec = 'eslint_d'
 
 " Neoformat
 " -----------------------------------------------------------------------------
@@ -234,19 +256,19 @@ let g:neoformat_enabled_elixir = ['exfmt']
 " Bookmarks
 " -----------------------------------------------------------------------------
 
-let g:bookmark_save_per_working_dir = 0
-let g:bookmark_auto_save = 1
-let g:bookmark_auto_save_file = $HOME .'/.SpaceVim.d/.vim-bookmarks'
-
-function! g:AutoloadBookmarks() 
-    " Hack to autoload lazy vim-bookmarks plugin
-    silent normal mn
-    " Fix SpaceVims broken auto-loading/saving bookmarks
-    call BookmarkLoad(g:bookmark_auto_save_file, 0, 1)
-    autocmd BufLeave,VimLeave * call BookmarkSave(g:bookmark_auto_save_file, 1)
-endfunction
-
-call Delayed("call AutoloadBookmarks()")
+" let g:bookmark_save_per_working_dir = 0
+" let g:bookmark_auto_save = 1
+" let g:bookmark_auto_save_file = $HOME .'/.SpaceVim.d/.vim-bookmarks'
+"
+" function! g:AutoloadBookmarks() 
+"     " Hack to autoload lazy vim-bookmarks plugin
+"     silent normal mn
+"     " Fix SpaceVims broken auto-loading/saving bookmarks
+"     call BookmarkLoad(g:bookmark_auto_save_file, 0, 1)
+"     autocmd BufLeave,VimLeave * call BookmarkSave(g:bookmark_auto_save_file, 1)
+" endfunction
+"
+" call Delayed("call AutoloadBookmarks()")
 
 
 " Slim 

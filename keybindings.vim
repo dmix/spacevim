@@ -10,9 +10,15 @@ if has('python3')
     nnoremap <silent> <C-p> :Denite file_rec/git<CR>
 endif
 
+" Bullets
+" -----------------------------------------------------------------------------
+
+" TODO: shortcuts to insert bullet points
+" ◦•‣
+
 
 " Config shortcut
-" p----------------------------------------------------------------------------
+" -----------------------------------------------------------------------------
 
 nnoremap vrc <Esc> :e ~/.SpaceVim.d/init.vim <CR>
 nnoremap vrp <Esc> :e ~/.SpaceVim.d/plugins.vim <CR>
