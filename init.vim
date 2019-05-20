@@ -26,6 +26,7 @@ let g:indentLine_enabled = 1
 let g:spacevim_enable_neomake = 1
 let g:delimitMate_expand_cr = 0
 let g:ruby_host_prog = 'rvm system do neovim-ruby-host'
+let g:spacevim_autocomplete_parens = 0
 
 " Disable swap warning
 set shortmess+=A
@@ -34,13 +35,12 @@ set shortmess+=A
 " -----------------------------------------------------------------------------
 
 call SpaceVim#layers#disable('sudo')
-call SpaceVim#layers#load('autocomplete')
-" call SpaceVim#layers#load('autocomplete', {
-"         \ 'auto-completion-return-key-behavior' : 'smart',
-"         \ 'auto-completion-tab-key-behavior' : 'smart',
-"         \ 'auto-completion-complete-with-key-sequence' : 'nil',
-"         \ 'auto-completion-complete-with-key-sequence-delay' : 0.1,
-"         \ })
+call SpaceVim#layers#load('autocomplete', {
+        \ 'auto-completion-return-key-behavior' : 'smart',
+        \ 'auto-completion-tab-key-behavior' : 'smart',
+        \ 'auto-completion-complete-with-key-sequence' : 'nil',
+        \ 'auto-completion-complete-with-key-sequence-delay' : 0.2,
+        \ })
 call SpaceVim#layers#load('incsearch')
 call SpaceVim#layers#load('shell')
 call SpaceVim#layers#load('colorscheme')
@@ -59,7 +59,7 @@ call SpaceVim#layers#load('lang#html')
 call SpaceVim#layers#load('lang#javascript')
 call SpaceVim#layers#load('lang#json')
 " call SpaceVim#layers#load('lang#julia')
-call SpaceVim#layers#load('lang#kotlin')
+" call SpaceVim#layers#load('lang#kotlin')
 " call SpaceVim#layers#load('lang#lisp')
 call SpaceVim#layers#load('lang#lua')
 call SpaceVim#layers#load('lang#markdown')
@@ -80,12 +80,13 @@ endfunction
 function! g:CustomFormatting()
     augroup customFormatting
         " Custom formatting
-        autocmd FileType make,erlang set noexpandtab
+        autocmd FileType make,erlang setlocal noexpandtab
+        autocmd FileType go setlocal tabstop=4 shiftwidth=4 noexpandtab
         autocmd FileType go autocmd BufWritePre <buffer> GoFmt
-        autocmd FileType go, eelixir set tabstop=4 shiftwidth=4 noexpandtab
+        autocmd FileType eelixir setlocal tabstop=4 shiftwidth=4 noexpandtab
         autocmd FileType javascript,vue,html set tabstop=4 shiftwidth=4 expandtab
-        autocmd FileType eruby set shiftwidth=2 expandtab
         autocmd FileType sass,scss,css set shiftwidth=2 expandtab
+        autocmd FileType eruby set shiftwidth=2 expandtab
         echo "CustomFormatting set"
     augroup END
 endfunction
@@ -99,6 +100,9 @@ runtime! uikit.vim
 
 " Autocmds
 " -----------------------------------------------------------------------------
+" Disable indent lines
+call Delayed("call CustomFormatting()")
+
 " Auto-start dir browseer
 " augroup startup
 "     let dirHome = '/\(Users\|home\)/\w*\%$'
@@ -170,10 +174,8 @@ augroup PreciseTrimWhiteSpace
   autocmd InsertLeave * call PreciseTrimWhiteSpace()
 augroup end
 
-
 " Strip line endings for certain filetypes
 autocmd FileType c,cpp,java,php,ruby,json,yaml,toml,javascript,html,css,scss,elixir,markdown,jinja,jinja.html autocmd BufWritePre <buffer> %s/\s\+$//e
 autocmd FileType vue autocmd BufWritePre <buffer> :Neomake
 autocmd FileType javascript,go,eelixir,make,erlang,html,eruby,vue,scss,sass,css call g:CustomFormatting()
 autocmd FileType elixir call deoplete#custom#source('alchemist', 'rank', 500)
-

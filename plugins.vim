@@ -8,13 +8,13 @@
 "
 " Custom Plugins
 " -----------------------------------------------------------------------------
-
-" If there is a particular plugin you don't like, you can define this
-" variable to disable them entirely:
-let g:spacevim_disabled_plugins=[
-  \ ['Raimondi/delimitMate']
-\ ]
-"\ ['es.next.syntax.vim'],
+"
+" " If there is a particular plugin you don't like, you can define this
+" " variable to disable them entirely:
+" let g:spacevim_disabled_plugins=[
+" \ ]
+" \ ['farseer90718/vim-taskwarrior',        { }],
+" \ 'neco-look',
 
 " \ ['elixir-lang/vim-elixir',          { 'on_ft' : ['elixir', 'eelixir']}],
 " \ ['kbrw/elixir.nvim',                { 'on_ft' : ['elixir', 'eelixir'],
@@ -22,17 +22,27 @@ let g:spacevim_disabled_plugins=[
 let g:spacevim_custom_plugins = [
 \ ['cocopon/iceberg.vim'],
 \ ['tomtom/tcomment_vim'],
+\ ['cespare/vim-toml',                { 'on_ft' : ['toml']}],
+\ ['sjl/vitality.vim',                { }],
+\ ['jceb/vim-orgmode',                { 'on_ft' : ['org']}],
 \ ['dmix/vim-tasks',                  { 'on_ft' : ['tasks']}],
 \ ['sebastianmarkow/deoplete-rust',   { 'on_ft' : ['rust']}],
 \ ['zchee/deoplete-zsh',              { 'on_ft' : ['zsh']}],
+\ ['uplus/deoplete-solargraph',       { 'on_ft' : ['ruby'] }],
+\ ['carlitux/deoplete-ternjs',        { 'do': 'npm install -g tern' }],
 \ ['SevereOverfl0w/deoplete-github',  { }],
 \ ['fishbullet/deoplete-ruby',        { }],
 \ ['Shougo/deoplete-rct',             { }],
 \ ['pbogut/deoplete-elm',             { }],
 \ ['fszymanski/deoplete-emoji',       { }],
-\ ['sjl/vitality.vim',                { }],
+\ ['billyvg/deoplete-import-js',      {}],
+\ ['wellle/tmux-complete.vim',        {}],
+\ ['autozimu/LanguageClient-neovim',  { 'branch': 'next', 'do': 'bash install.sh' }],
+\ ['yaymukund/vim-rabl',              { 'on_ft' : ['rabl']}],
+\ ['isRuslan/vim-es6',                { 'on_ft' : ['javascript']}],
 \ ['christoomey/vim-tmux-navigator',  { }],
 \ ['benmills/vimux',                  { }],
+\ ['posva/vim-vue',                   { 'on_ft':  ['vue']}],
 \ ['baabelfish/nvim-nim',             { 'on_ft':  ['nim']}],
 \ ['ehamberg/vim-cute-python',        { 'on_ft' : ['python']}],
 \ ['ehamberg/vim-cute-erlang',        { 'on_ft' : ['erlang']}],
@@ -55,12 +65,15 @@ let g:spacevim_custom_plugins = [
 \ ['farseer90718/vim-taskwarrior',        { }],
 \]
 " \ ['jiangmiao/auto-pairs',            {}],
-" \ ['',        { }],
 " \ ['isRuslan/vim-es6',                { 'on_ft' : ['javascript']}],
+" \ ['kbrw/elixir.nvim',                { 'on_ft' : ['elixir', 'eelixir'],
+" \ ['',        { }],
 
 " -----------------------------------------------------------------------------
 " Plugin options
 " -----------------------------------------------------------------------------
+
+let g:deoplete_import_js#bin = 'importjs'
 
 " Task Bindings
 " -----------------------------------------------------------------------------
@@ -179,7 +192,7 @@ function! g:DeniteSettings()
 		\ ['git', 'ls-files', '-co', '--exclude-standard'])
 
     call denite#custom#var('file_rec', 'command',
-        \ ['pt', '--follow', '--nocolor', '--nogroup', '-g', ''])
+        \ ['rg', '-l', '--follow', '-i', ''])
 
     call denite#custom#var('grep', 'command', ['pt'])
     call denite#custom#var('grep', 'default_opts',
@@ -217,30 +230,38 @@ let g:better_whitespace_enabled = 0
 
 " NeoMake x Linters
 " ------------------------------------------------------------------------------
-let g:neomake_vim_enabled_makers = ['vint']
-let g:neomake_erlang_enabled_makers = ['flycheck']
-let g:neomake_elixir_enabled_makers = ['credo']
+let g:neomake_vim_enabled_makers        = ['vint']
+let g:neomake_erlang_enabled_makers     = ['flycheck']
+let g:neomake_elixir_enabled_makers     = ['credo']
+let g:neomake_css_enabled_makers        = ['stylelint']
+let g:neomake_markdown_enabled_makers   = ['proselint']
+let g:neomake_haml_enabled_makers       = ['haml-lint']
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_ruby_enabled_makers = ['rubocop']
-let g:neomake_go_enabled_makers = ['gofmt']
-let g:neomake_haskell_enabled_makers = ['hlint']
-let g:neomake_html_enabled_makers = ['tidy']
-let g:neomake_json_enabled_makers = ['jsonlint']
-let g:neomake_html_enabled_makers = ['tidy']
-let g:neomake_scss_enabled_makers = ['sass_lint']
+let g:neomake_vue_enabled_makers        = ['eslint']
+let g:neomake_ruby_enabled_makers       = ['rubocop']
+let g:neomake_haskell_enabled_makers    = ['hlint']
+let g:neomake_html_enabled_makers       = ['tidy']
+let g:neomake_json_enabled_makers       = ['jsonlint']
+let g:neomake_go_enabled_makers         = ['gofmt']
+let g:neomake_python_enabled_makers     = ['flake8']
+let g:neomake_scss_enabled_makers       = ['sasslint']
+let g:neomake_sh_enabled_makers         = ['shellcheck']
+let g:neomake_text_enabled_makers       = ['proselint']
 let g:neomake_typescript_enabled_makers = ['tslint']
-let g:neomake_yaml_enabled_makers = ['yamllint']
-let g:neomake_zsh_enabled_makers = ['zsh']
-let g:neomake_sh_enabled_makers = ['shellcheck']
-let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_css_enabled_makers = ['stylelint']
-let g:neomake_markdown_enabled_makers = ['proselint']
-let g:neomake_text_enabled_makers = ['proselint']
-let g:neomake_vue_enabled_makers = ['eslint']
+let g:neomake_yaml_enabled_makers       = ['yamllint']
+let g:neomake_zsh_enabled_makers        = ['zsh']
 
-autocmd FileType vue autocmd BufWritePre <buffer> Neomake
 " let g:syntastic_javascript_checkers = ['eslint']
 " let g:syntastic_javascript_eslint_exec = 'eslint_d'
+
+" gem install haml_lint
+" gem install rubocop
+" npm install -g sass-lint
+" npm install -g stylelint         
+" npm install -g proselint
+" npm install -g jsonlint
+" brew install yamllint
+" brew install tidy-html5
 
 " Neoformat
 " -----------------------------------------------------------------------------
@@ -275,3 +296,76 @@ let g:neoformat_enabled_elixir = ['exfmt']
 " -----------------------------------------------------------------------------
 
 autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
+
+" Tern
+" -----------------------------------------------------------------------------
+function! g:DeopleteSettings()
+    " Set bin if you have many instalations
+    let g:deoplete#sources#ternjs#tern_bin = '/usr/local/bin/tern'
+    let g:deoplete#sources#ternjs#timeout = 1
+
+    " Whether to include the types of the completions in the result data. Default: 0
+    let g:deoplete#sources#ternjs#types = 1
+
+    " Whether to include the distance (in scopes for variables, in prototypes for 
+    " properties) between the completions and the origin position in the result 
+    " data. Default: 0
+    let g:deoplete#sources#ternjs#depths = 0
+
+    " Whether to include documentation strings (if found) in the result data.
+    " Default: 0
+    let g:deoplete#sources#ternjs#docs = 0
+
+    " When on, only completions that match the current word at the given point will
+    " be returned. Turn this off to get all results, so that you can filter on the 
+    " client side. Default: 1
+    let g:deoplete#sources#ternjs#filter = 1
+
+    " Whether to use a case-insensitive compare between the current word and 
+    " potential completions. Default 0
+    let g:deoplete#sources#ternjs#case_insensitive = 1
+
+    " When completing a property and no completions are found, Tern will use some 
+    " heuristics to try and return some properties anyway. Set this to 0 to 
+    " turn that off. Default: 1
+    let g:deoplete#sources#ternjs#guess = 0
+
+    " Determines whether the result set will be sorted. Default: 1
+    let g:deoplete#sources#ternjs#sort = 1
+
+    " When disabled, only the text before the given position is considered part of 
+    " the word. When enabled (the default), the whole variable name that the cursor
+    " is on will be included. Default: 1
+    let g:deoplete#sources#ternjs#expand_word_forward = 1
+
+    " Whether to ignore the properties of Object.prototype unless they have been 
+    " spelled out by at least two characters. Default: 1
+    let g:deoplete#sources#ternjs#omit_object_prototype = 0
+
+    " Whether to include JavaScript keywords when completing something that is not 
+    " a property. Default: 0
+    let g:deoplete#sources#ternjs#include_keywords = 1
+
+    " If completions should be returned when inside a literal. Default: 1
+    let g:deoplete#sources#ternjs#in_literal = 1
+
+
+    "Add extra filetypes
+    let g:deoplete#sources#ternjs#filetypes = [
+                    \ 'js',
+                    \ 'jsx',
+                    \ 'javascript.jsx',
+                    \ 'vue',
+                    \ ]
+
+    " Pass a dictionary to set multiple options
+    call deoplete#custom#option({
+    \ 'auto_complete_delay': 100,
+    \ 'smart_case': v:true,
+    \ })
+
+    let g:deoplete_import_js#bin = 'importjs'
+endfunction
+
+" Delayed call due to race condition
+call Delayed("call DeopleteSettings()")
