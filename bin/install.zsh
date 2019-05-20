@@ -55,7 +55,7 @@ if ((MACOS)); then
     fi
 fi
 
-if [[ -d $HOME/.rvm ]]; then
+if [[ ! -d $HOME/.rvm ]]; then
     echo '> Installing RVM'
     gpg --keyserver hkp://keys.gnupg.net \
 	--recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
@@ -137,10 +137,10 @@ sudo gem install neovim
 # ------------------------------------------------------------
 sudo gem install rubocop
 
-pip install vim-vint \
-	    yamllint \
-	    flake8 \
-	    proselint
+pip3 install vim-vint \
+             yamllint \
+             flake8 \
+             proselint
 
 sudo npm install -g eslint \
                     jsonlint \
