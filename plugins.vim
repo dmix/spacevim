@@ -2,6 +2,7 @@
 " SpaceVim Plugins
 " ==============================================================================
 
+
 " Note: check here for new plugins 
 " https://github.com/search?o=desc&q=language%3A%22Vim+script%22+stars%3A%3E25+pushed%3A%3E2017-01-01&s=stars&type=Repositories&utf8=%E2%9C%93
 " -----------------------------------------------------------------------------
@@ -11,44 +12,40 @@
 "
 " " If there is a particular plugin you don't like, you can define this
 " " variable to disable them entirely:
-" let g:spacevim_disabled_plugins=[
-" \ ]
-" \ ['farseer90718/vim-taskwarrior',        { }],
+let g:spacevim_disabled_plugins=[
+\ ]
 " \ 'neco-look',
+" \ ['farseer90718/vim-taskwarrior',        { }],
 
+" \ ['farseer90718/vim-taskwarrior',    { }],
 " \ ['elixir-lang/vim-elixir',          { 'on_ft' : ['elixir', 'eelixir']}],
 " \ ['kbrw/elixir.nvim',                { 'on_ft' : ['elixir', 'eelixir'],
+" \ ['ehamberg/vim-cute-erlang',        { 'on_ft' : ['erlang']}],
+" \ ['ehamberg/vim-cute-python',        { 'on_ft' : ['python']}],
+"\ ['jceb/vim-orgmode',                { 'on_ft' : ['org']}],
+"\ ['benmills/vimux',                  { }], " for opening TODO in focus mode
 "                                       \ 'do': 'yes \| ./install.sh' }],
 let g:spacevim_custom_plugins = [
+\ ['powerman/vim-plugin-AnsiEsc'],
 \ ['cocopon/iceberg.vim'],
 \ ['tomtom/tcomment_vim'],
-\ ['cespare/vim-toml',                { 'on_ft' : ['toml']}],
-\ ['sjl/vitality.vim',                { }],
-\ ['jceb/vim-orgmode',                { 'on_ft' : ['org']}],
-\ ['dmix/vim-tasks',                  { 'on_ft' : ['tasks']}],
+\ ['sjl/vitality.vim'],
+\ ['christoomey/vim-tmux-navigator'],
+\ ['SevereOverfl0w/deoplete-github'],
+\ ['fishbullet/deoplete-ruby'],
+\ ['Shougo/deoplete-rct'],
+\ ['pbogut/deoplete-elm'],
+\ ['fszymanski/deoplete-emoji'],
+\ ['billyvg/deoplete-import-js'],
+\ ['wellle/tmux-complete.vim'],
+\ ['autozimu/LanguageClient-neovim',  { 'branch': 'next', 'do': 'bash install.sh' }],
 \ ['sebastianmarkow/deoplete-rust',   { 'on_ft' : ['rust']}],
 \ ['zchee/deoplete-zsh',              { 'on_ft' : ['zsh']}],
 \ ['uplus/deoplete-solargraph',       { 'on_ft' : ['ruby'] }],
 \ ['carlitux/deoplete-ternjs',        { 'do': 'npm install -g tern' }],
-\ ['SevereOverfl0w/deoplete-github',  { }],
-\ ['fishbullet/deoplete-ruby',        { }],
-\ ['Shougo/deoplete-rct',             { }],
-\ ['pbogut/deoplete-elm',             { }],
-\ ['fszymanski/deoplete-emoji',       { }],
-\ ['billyvg/deoplete-import-js',      {}],
-\ ['wellle/tmux-complete.vim',        {}],
-\ ['autozimu/LanguageClient-neovim',  { 'branch': 'next', 'do': 'bash install.sh' }],
 \ ['yaymukund/vim-rabl',              { 'on_ft' : ['rabl']}],
 \ ['isRuslan/vim-es6',                { 'on_ft' : ['javascript']}],
-\ ['christoomey/vim-tmux-navigator',  { }],
-\ ['benmills/vimux',                  { }],
-\ ['posva/vim-vue',                   { 'on_ft':  ['vue']}],
-\ ['baabelfish/nvim-nim',             { 'on_ft':  ['nim']}],
-\ ['ehamberg/vim-cute-python',        { 'on_ft' : ['python']}],
-\ ['ehamberg/vim-cute-erlang',        { 'on_ft' : ['erlang']}],
-\ ['enomsg/vim-haskellConcealPlus',   { 'on_ft' : ['haskell']}],
 \ ['MnO2/vim-ocaml-conceal',          { 'on_ft' : ['ocaml']}],
-\ ["d-gold/vim-cute-ruby",            { 'on_ft' : ['ruby']}],
 \ ['thinca/vim-ref',                  { 'on_ft' : ['elixir', 'eelixir']}],
 \ ['mattn/webapi-vim',                { 'on_ft' : ['elixir', 'eelixir']}],
 \ ['lucidstack/hex.vim',              { 'on_ft' : ['elixir', 'eelixir']}],
@@ -57,17 +54,20 @@ let g:spacevim_custom_plugins = [
 \ ['huiyiqun/elvish.vim',             { 'on_ft' : ['elvish']}],
 \ ['slim-template/vim-slim',          { 'on_ft' : ['elixir', 'html', 'slim', 'eelixir']}],
 \ ['Glench/Vim-Jinja2-Syntax',        { 'on_ft' : ['jinja.html']}],
-\ ['posva/vim-vue',                   { 'on_ft' : ['vue']}],
 \ ['digitaltoad/vim-pug',             { 'on_ft' : ['pug', 'jade']}],
-\ ['vimwiki/vimwiki',        { }],
-\ ['tbabej/taskwiki',        { }],
-\ ['powerman/vim-plugin-AnsiEsc',        { }],
-\ ['farseer90718/vim-taskwarrior',        { }],
+\ ['mhinz/vim-mix-format',            { 'on_ft' : ['elixir']}],
+\ ['storyn26383/vim-vue',             { 'on_ft' : ['vue']}],
+\ ['cakebaker/scss-syntax.vim',       { 'on_ft':  ['vue'] }],
+\ ['dmix/vim-tasks',                  { 'on_ft' : ['tasks']}],
+\ ['Shougo/neopairs.vim'],
 \]
 " \ ['jiangmiao/auto-pairs',            {}],
 " \ ['isRuslan/vim-es6',                { 'on_ft' : ['javascript']}],
 " \ ['kbrw/elixir.nvim',                { 'on_ft' : ['elixir', 'eelixir'],
-" \ ['',        { }],
+" \ ['vimwiki/vimwiki',                 { }],
+" \ ['tbabej/taskwiki',                 { }],
+" \ ['posva/vim-vue',                   { 'on_ft':  ['vue']}],
+
 
 " -----------------------------------------------------------------------------
 " Plugin options
@@ -260,8 +260,11 @@ let g:neomake_zsh_enabled_makers        = ['zsh']
 " npm install -g stylelint         
 " npm install -g proselint
 " npm install -g jsonlint
+" npm i -g eslint eslint-plugin-vue
 " brew install yamllint
 " brew install tidy-html5
+" gem install solargraph -v 0.18.0
+" pip install solargraph-utils.py --user
 
 " Neoformat
 " -----------------------------------------------------------------------------
@@ -360,7 +363,7 @@ function! g:DeopleteSettings()
 
     " Pass a dictionary to set multiple options
     call deoplete#custom#option({
-    \ 'auto_complete_delay': 100,
+    \ 'auto_complete_delay': 50,
     \ 'smart_case': v:true,
     \ })
 
@@ -369,3 +372,30 @@ endfunction
 
 " Delayed call due to race condition
 call Delayed("call DeopleteSettings()")
+
+" Mix Format
+let g:mix_format_on_save = 1
+
+" Neosnippet
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+" For conceal markers.
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif

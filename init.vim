@@ -20,7 +20,7 @@ let g:spacevim_enable_tabline_filetype_icon = 1
 let g:spacevim_enable_os_fileformat_icon = 1
 let g:spacevim_buffer_index_type = 1
 let g:spacevim_realtime_leader_guide = 1
-let g:spacevim_colorscheme = 'iceberg'
+let g:spacevim_colorscheme = 'jellybeans'
 let g:spacevim_filemanager = 'nerdtree'
 let g:indentLine_enabled = 1
 let g:spacevim_enable_neomake = 1
@@ -61,12 +61,18 @@ call SpaceVim#layers#load('lang#json')
 " call SpaceVim#layers#load('lang#julia')
 " call SpaceVim#layers#load('lang#kotlin')
 " call SpaceVim#layers#load('lang#lisp')
+call SpaceVim#layers#load('lang#latex')
 call SpaceVim#layers#load('lang#lua')
+call SpaceVim#layers#load('lang#nim')
 call SpaceVim#layers#load('lang#markdown')
+call SpaceVim#layers#load('lang#racket')
 call SpaceVim#layers#load('lang#ocaml')
 " call SpaceVim#layers#load('lang#perl')
 " call SpaceVim#layers#load('lang#php')
+call SpaceVim#layers#load('lang#purescript')
 call SpaceVim#layers#load('lang#vue')
+call SpaceVim#layers#load('lang#vim')
+call SpaceVim#layers#load('lang#toml')
 
 " call SpaceVim#layers#load('tools#screensaver')
 
@@ -143,7 +149,7 @@ augroup END
 "                 \ | endif
 " augroup END
 
-
+set nospell
 augroup fixFiletypes
     " Aliasing file types
     autocmd BufNewFile,BufRead *.todo set syntax=markdown
@@ -151,11 +157,12 @@ augroup fixFiletypes
     autocmd BufNewFile,BufRead *.html.eex set syntax=elixir
     autocmd BufNewFile,BufRead *.html.eex set syntax=eelixir
     autocmd BufNewFile,BufRead *.md set wrap
-    autocmd BufNewFile,BufRead *.md set spell
+    " autocmd BufNewFile,BufRead *.md set spell
 augroup END
 
 " Whitespace Removal
 " ---------------------------------------------------------------------
+
 function! PreciseTrimWhiteSpace()
   " We need to save the view because the substitute command might
   " or might not move the cursor, depending on whether it finds
@@ -177,5 +184,22 @@ augroup end
 " Strip line endings for certain filetypes
 autocmd FileType c,cpp,java,php,ruby,json,yaml,toml,javascript,html,css,scss,elixir,markdown,jinja,jinja.html autocmd BufWritePre <buffer> %s/\s\+$//e
 autocmd FileType vue autocmd BufWritePre <buffer> :Neomake
+autocmd FileType vue autocmd BufWritePre <buffer> :call PreciseTrimWhiteSpace()
+autocmd FileType vue syntax sync fromstart
 autocmd FileType javascript,go,eelixir,make,erlang,html,eruby,vue,scss,sass,css call g:CustomFormatting()
 autocmd FileType elixir call deoplete#custom#source('alchemist', 'rank', 500)
+
+" Colorscheme tweaks
+"---------------------------------------------------------------------
+
+let g:jellybeans_use_term_italics = 1
+let g:jellybeans_overrides = {
+\    'background': { 'guibg': '0e0e0e' },
+\    'Comment': { 'guifg': '7d7d7d',
+\                 'guibg': '0e0e0e',
+\                 'ctermfg': 'Black',
+\                 'ctermbg': 'Gray',
+\                 'attr': '' },
+\}
+
+set nospell
